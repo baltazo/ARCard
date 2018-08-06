@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1350436806749984}
+  m_IsPrefabAsset: 1
+--- !u!1 &1350436806749984
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4184708349320988}
+  - component: {fileID: 114312895649983970}
+  - component: {fileID: 114284286771624438}
+  m_Layer: 0
+  m_Name: MainController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4184708349320988
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1350436806749984}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114284286771624438
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1350436806749984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fdc0a93cbed0bc42b6be155fac93f2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodModels:
+  - {fileID: 1861485389354998, guid: c8ba798ca97771d4da49fa8bb939ba99, type: 2}
+  - {fileID: 1810069027473112, guid: bfbc4b83b0be70040a607aad53d12bdb, type: 2}
+  - {fileID: 1564538476467530, guid: 159c6e476fd02874780e665d3175c256, type: 2}
+  - {fileID: 1920072909066098, guid: 383e624336570b74aad8ffeaf9516bd5, type: 2}
+--- !u!114 &114312895649983970
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1350436806749984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 375d1b16d75029f498f912ebbda0dde0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AugmentedImageVisualizerPrefab: {fileID: 114456719788833914, guid: 85a5b6187b6924bd5adcdffee036da34,
+    type: 2}
+  animalVisualizerPrefab: {fileID: 114733804269508640, guid: 21d9cf0ec7bed2842a2737f29a24e41e,
+    type: 2}
+  FitToScanOverlay: {fileID: 0}
+  scoreBoardController: {fileID: 0}
+  pausePanel: {fileID: 0}
+  loadingAnim: {fileID: 0}
