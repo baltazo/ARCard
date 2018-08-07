@@ -37,7 +37,7 @@ namespace GoogleARCore.Examples.AugmentedImage
         /// A prefab for visualizing an AugmentedImage.
         /// </summary>
         public AugmentedImageVisualizer AugmentedImageVisualizerPrefab;
-        public AnimalVisualizer animalVisualizerPrefab;
+        public AnimalVisualizer[] animalVisualizerPrefabs;
 
         /// <summary>
         /// The overlay containing the fit to scan user guide.
@@ -53,6 +53,12 @@ namespace GoogleARCore.Examples.AugmentedImage
             = new Dictionary<int, AnimalVisualizer>();
         private List<AugmentedImage> m_TempAugmentedImages = new List<AugmentedImage>();
         private bool hasSpawned = false;
+
+        private void Awake()
+        {
+            hasSpawned = false;
+            gamePaused = false;
+        }
 
         private void Start()
         {
@@ -106,19 +112,18 @@ namespace GoogleARCore.Examples.AugmentedImage
                 {
                     // Create an anchor to ensure that ARCore keeps tracking this augmented image.
                     Anchor anchor = image.CreateAnchor(image.CenterPose);
-                    //visualizer = (AnimalVisualizer)Instantiate(animalVisualizerPrefab, anchor.transform);
-                    visualizer = (AnimalVisualizer)Instantiate(animalVisualizerPrefab, anchor.transform.position, Quaternion.identity, anchor.transform);
+                    visualizer = (AnimalVisualizer)Instantiate(animalVisualizerPrefabs[image.DatabaseIndex], anchor.transform.position, Quaternion.identity, anchor.transform);
                     visualizer.Image = image;
                     m_Visualizers.Add(image.DatabaseIndex, visualizer);
                     hasSpawned = true;
                     scoreBoardController.SetAnchor(anchor);
-                    foodController.SetPlane(GameObject.Find("Plane"), anchor);
+                    foodController.Setup(GameObject.Find("Plane"), anchor, image.DatabaseIndex);
                 }
-                else if (image.TrackingState == TrackingState.Stopped && visualizer != null)
+                /*else if (image.TrackingState == TrackingState.Stopped && visualizer != null)
                 {
                     m_Visualizers.Remove(image.DatabaseIndex);
                     GameObject.Destroy(visualizer.gameObject);
-                }
+                }*/
 
 
 
@@ -182,7 +187,6 @@ namespace GoogleARCore.Examples.AugmentedImage
                 child.gameObject.SetActive(false);
             }
             pausePanel.GetComponent<VerticalLayoutGroup>().enabled = false;
-            loadingAnim.SetActive(true);
             StartCoroutine(ResetScene());
 
         }

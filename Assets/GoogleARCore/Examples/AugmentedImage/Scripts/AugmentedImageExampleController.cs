@@ -72,7 +72,6 @@ namespace GoogleARCore.Examples.AugmentedImage
             {
                 AugmentedImageVisualizer visualizer = null;
                 m_Visualizers.TryGetValue(image.DatabaseIndex, out visualizer);
-                Debug.Log(image.TrackingState);
                 if (image.TrackingState == TrackingState.Tracking && visualizer == null)
                 {
                     // Create an anchor to ensure that ARCore keeps tracking this augmented image.
@@ -86,9 +85,6 @@ namespace GoogleARCore.Examples.AugmentedImage
                     m_Visualizers.Remove(image.DatabaseIndex);
                     GameObject.Destroy(visualizer.gameObject);
                 }
-
-               
-
             }
 
             // Show the fit-to-scan overlay if there are no images that are Tracking.

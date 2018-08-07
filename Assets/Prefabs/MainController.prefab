@@ -52,11 +52,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fdc0a93cbed0bc42b6be155fac93f2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foodModels:
-  - {fileID: 1861485389354998, guid: c8ba798ca97771d4da49fa8bb939ba99, type: 2}
-  - {fileID: 1810069027473112, guid: bfbc4b83b0be70040a607aad53d12bdb, type: 2}
+  unicornFood:
   - {fileID: 1564538476467530, guid: 159c6e476fd02874780e665d3175c256, type: 2}
   - {fileID: 1920072909066098, guid: 383e624336570b74aad8ffeaf9516bd5, type: 2}
+  - {fileID: 1137888671380682, guid: 6240dfc5c58839d4bbe33e5d31011404, type: 2}
+  - {fileID: 1032042987190024, guid: db326426a2a19cd40990135cb51e530e, type: 2}
+  dragonFood:
+  - {fileID: 1564538476467530, guid: 476719fea192be841bf11f619145b3ae, type: 2}
+  - {fileID: 1986276714831568, guid: f537e8c4e44e59942aa81c44c9c5d530, type: 2}
+  - {fileID: 1418912682918442, guid: aded16a1bc1b1b145ab0d141d2d9caf3, type: 2}
+  - {fileID: 1559058602487264, guid: 8d1d75296d8ebc841812021125c87e2b, type: 2}
 --- !u!114 &114312895649983970
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -70,8 +75,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AugmentedImageVisualizerPrefab: {fileID: 114456719788833914, guid: 85a5b6187b6924bd5adcdffee036da34,
     type: 2}
-  animalVisualizerPrefab: {fileID: 114733804269508640, guid: 21d9cf0ec7bed2842a2737f29a24e41e,
-    type: 2}
+  animalVisualizerPrefabs:
+  - {fileID: 114641065304948594, guid: f8d627dc8dce45c46967cdf1df12bf47, type: 2}
+  - {fileID: 114733804269508640, guid: 21d9cf0ec7bed2842a2737f29a24e41e, type: 2}
   FitToScanOverlay: {fileID: 0}
   scoreBoardController: {fileID: 0}
   pausePanel: {fileID: 0}
