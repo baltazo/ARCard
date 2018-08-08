@@ -60,6 +60,7 @@ namespace GoogleARCore
         public void Awake()
         {
             LifecycleManager.Instance.CreateSession(this);
+            DontDestroyOnLoad(gameObject);
         }
 
         /// <summary>

@@ -16,6 +16,7 @@ public class ScoreBoardController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        firstPersonCamera = Camera.main;
         textMeshPro = GetComponentInChildren<TextMeshPro>();
 		foreach (Renderer r in GetComponentsInChildren<Renderer>())
         {
