@@ -50,18 +50,26 @@ public class FoodController : MonoBehaviour {
     {
         plane = obj;
         anchor = anc;
-        animalChosen = animalIndex;
+        animalChosen = animalIndex; // 0-1 Unicorn 2-3 Dragon
         planeCollider = plane.GetComponent<Collider>();
         planeCenter = planeCollider.bounds.center;
 
         switch (animalChosen)
         {
             case 0:
-                foodList = dragonFood;
+                foodList = unicornFood;
                 break;
 
             case 1:
                 foodList = unicornFood;
+                break;
+
+            case 2:
+                foodList = dragonFood;
+                break;
+
+            case 3:
+                foodList = dragonFood;
                 break;
         }
 

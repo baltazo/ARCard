@@ -8,6 +8,7 @@ public class IntroUINav : MonoBehaviour {
     public GameObject skipButton;
     public GameObject loadingIcon;
     private Animator animator;
+    [SerializeField] private GameObject quitPanel;
 
 	// Use this for initialization
 	void Start () {
@@ -18,22 +19,32 @@ public class IntroUINav : MonoBehaviour {
         animator = GetComponent<Animator>();
 	}
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (quitPanel.activeSelf)
+            {
+                QuitGame();
+                return;
+            }
+            animator.SetTrigger("Back");
+        }
+    }
+
     public void PanelOneToTwo()
     {
-        animator.SetBool("Panel2", true);
-        animator.SetBool("Panel1", false);
+        animator.SetTrigger("Panel02");
     }
 
     public void PanelTwoToThree()
     {
-        animator.SetBool("Panel3", true);
-        animator.SetBool("Panel2", false);
+        animator.SetTrigger("Panel03");
     }
 
     public void FadeOut()
     {
-        animator.SetBool("FadeOut", true);
-        animator.SetBool("Panel3", false);
+        animator.SetTrigger("FadeOut");
     }
 
     public void StartGame()
@@ -41,7 +52,16 @@ public class IntroUINav : MonoBehaviour {
         loadingIcon.SetActive(true);
         PlayerPrefs.SetInt("PLAYED", 1);
         StartCoroutine(LoadNextSceneAsync());
+    }
 
+    public void QuitToOne()
+    {
+        animator.SetTrigger("Panel01");
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 
     IEnumerator LoadNextSceneAsync()

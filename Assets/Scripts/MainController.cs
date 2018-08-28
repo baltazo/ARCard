@@ -36,15 +36,16 @@ namespace GoogleARCore.Examples.AugmentedImage
         /// <summary>
         /// A prefab for visualizing an AugmentedImage.
         /// </summary>
-        public AugmentedImageVisualizer AugmentedImageVisualizerPrefab;
         public AnimalVisualizer[] animalVisualizerPrefabs;
 
         /// <summary>
         /// The overlay containing the fit to scan user guide.
         /// </summary>
-        public GameObject FitToScanOverlay;
+        //public GameObject FitToScanOverlay;
+        public FitToScan fitToScan;
         public ScoreBoardController scoreBoardController;
         public GameObject pausePanel;
+        public GameObject helpPanel;
         public GameObject loadingAnim;
 
         public GameObject tempCamera;
@@ -79,9 +80,11 @@ namespace GoogleARCore.Examples.AugmentedImage
         /// </summary>
         public void Update()
         {
-            // Exit the app when the 'back' button is pressed.
-            if (Input.GetKey(KeyCode.Escape))
+            Debug.Log("gamePaused : " + gamePaused);
+            
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
+                Debug.Log("Back button pressed");
                 PauseGame();
             }
 
@@ -158,21 +161,18 @@ namespace GoogleARCore.Examples.AugmentedImage
             {
                 if (visualizer.Image.TrackingState == TrackingState.Tracking)
                 {
-                    FitToScanOverlay.SetActive(false);
+                    fitToScan.DisableFitToScan();
                     return;
                 }
             }
 
-            FitToScanOverlay.SetActive(true);
+            fitToScan.EnableFitToScan();
         }
 
         private void OnApplicationPause(bool pause)
         {
             if (pause)
             {
-                /*Debug.Log("Is Paused");
-                m_Visualizers.Clear();
-                GameObject.Destroy(GameObject.Find("Anchor"));*/
                 PauseGame();
             }
         }
@@ -201,6 +201,7 @@ namespace GoogleARCore.Examples.AugmentedImage
         public void ResumeGame()
         {
             pausePanel.SetActive(false);
+            helpPanel.SetActive(false);
             Time.timeScale = 1f;
             gamePaused = false;
         }
@@ -221,6 +222,13 @@ namespace GoogleARCore.Examples.AugmentedImage
             tempCamera.SetActive(true);
             Destroy(arcoreDevice);
             SceneManager.LoadScene(0);
+        }
+
+        public void Help()
+        {
+            helpPanel.SetActive(true);
+            Time.timeScale = 0f;
+            gamePaused = true;
         }
 
         public void QuitGame()

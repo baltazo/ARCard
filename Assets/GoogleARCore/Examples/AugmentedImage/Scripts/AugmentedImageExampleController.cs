@@ -52,10 +52,10 @@ namespace GoogleARCore.Examples.AugmentedImage
         public void Update()
         {
             // Exit the app when the 'back' button is pressed.
-            if (Input.GetKey(KeyCode.Escape))
+            /*if (Input.GetKey(KeyCode.Escape))
             {
                 Application.Quit();
-            }
+            }*/
 
             // Check that motion tracking is tracking.
             if (Session.Status != SessionStatus.Tracking)

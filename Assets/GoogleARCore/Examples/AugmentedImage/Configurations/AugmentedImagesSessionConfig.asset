@@ -15,6 +15,6 @@ MonoBehaviour:
   PlaneFindingMode: 0
   EnableLightEstimation: 0
   EnableCloudAnchor: 0
-  AugmentedImageDatabase: {fileID: 11400000, guid: 289dfc0846f85b548a4e545c2d8ee0c7,
+  AugmentedImageDatabase: {fileID: 11400000, guid: 9dfa8f9387a164f4191c218be77ffc18,
     type: 2}
   CameraFocusMode: 1
