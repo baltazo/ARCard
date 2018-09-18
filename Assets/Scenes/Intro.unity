@@ -52,8 +52,8 @@ LightmapSettings:
     m_AlbedoBoost: 1
     m_TemporalCoherenceThreshold: 1
     m_EnvironmentLightingMode: 0
-    m_EnableBakedLightmaps: 1
-    m_EnableRealtimeLightmaps: 1
+    m_EnableBakedLightmaps: 0
+    m_EnableRealtimeLightmaps: 0
   m_LightmapEditorSettings:
     serializedVersion: 10
     m_Resolution: 2
@@ -1545,6 +1545,10 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1447902163}
+    - target: {fileID: 1690174725343216, guid: 675c60978ee21c54a978a2c44a178c0d, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 675c60978ee21c54a978a2c44a178c0d, type: 2}
   m_IsPrefabAsset: 0
@@ -1590,6 +1594,18 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0af211cb55246449bdedc2e9c76bd80, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1884436491 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1534793453472264, guid: b0af211cb55246449bdedc2e9c76bd80,
+    type: 2}
+  m_PrefabInternal: {fileID: 1884436490}
+--- !u!81 &1884436492
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1884436491}
+  m_Enabled: 1
 --- !u!1 &2019524201
 GameObject:
   m_ObjectHideFlags: 0

@@ -46,12 +46,11 @@ namespace GoogleARCore.Examples.AugmentedImage
         public ScoreBoardController scoreBoardController;
         public GameObject pausePanel;
         public GameObject helpPanel;
+        public GameObject creditsPanel;
         public GameObject loadingAnim;
 
         public GameObject tempCamera;
         private GameObject arcoreDevice;
-
-        public GameObject debugText; // Remove once the debug phase is done
 
         private FoodController foodController;
         private bool gamePaused = false;
@@ -80,12 +79,25 @@ namespace GoogleARCore.Examples.AugmentedImage
         /// </summary>
         public void Update()
         {
-            Debug.Log("gamePaused : " + gamePaused);
             
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                Debug.Log("Back button pressed");
-                PauseGame();
+                if(creditsPanel.activeSelf == true)
+                {
+                    ShowCredits();
+                }
+                else if(helpPanel.activeSelf == true) 
+                {
+                    ResumeGame();
+                }
+                else if(pausePanel.activeSelf == true)
+                {
+                    QuitGame();
+                }
+                else
+                {
+                    PauseGame();
+                }
             }
 
             // Prevent the screen from dimming unless the game is paused
@@ -93,17 +105,16 @@ namespace GoogleARCore.Examples.AugmentedImage
             {
                 int gamePausedSleepTimeout = 15;
                 Screen.sleepTimeout = gamePausedSleepTimeout;
-                if (Input.GetKey(KeyCode.Escape))
+                /*if (Input.GetKey(KeyCode.Escape))
                 {
                     Application.Quit();
-                }
+                }*/
             }
             else
             {
                 Screen.sleepTimeout = SleepTimeout.NeverSleep;
             }
 
-            Debug.Log("Session Status " + Session.Status);
             // Check that motion tracking is tracking.
             if (Session.Status != SessionStatus.Tracking || hasSpawned)
             {
@@ -118,22 +129,7 @@ namespace GoogleARCore.Examples.AugmentedImage
             foreach (var image in m_TempAugmentedImages)
             {
                 AnimalVisualizer visualizer = null;
-                m_Visualizers.TryGetValue(image.DatabaseIndex, out visualizer);
-
-                if(image.TrackingState == TrackingState.Paused)
-                {
-                    debugText.GetComponent<Text>().text = "Tracking Paused";
-                    debugText.SetActive(true);
-                }
-                else if(image.TrackingState == TrackingState.Stopped)
-                {
-                    debugText.GetComponent<Text>().text = "Tracking Stopped";
-                    debugText.SetActive(true);
-                }
-                else
-                {
-                    debugText.SetActive(false);
-                }                                                       
+                m_Visualizers.TryGetValue(image.DatabaseIndex, out visualizer);                                                    
 
                 if (image.TrackingState == TrackingState.Tracking && visualizer == null)
                 {
@@ -231,9 +227,21 @@ namespace GoogleARCore.Examples.AugmentedImage
             gamePaused = true;
         }
 
+        public void ShowCredits()
+        {
+            creditsPanel.SetActive(!creditsPanel.activeSelf);
+        }
+
+
+
         public void QuitGame()
         {
             Application.Quit();
+        }
+
+        public void ShowPrivacyPolicy()
+        {
+            Application.OpenURL("https://sites.google.com/view/ar-fun-stuff-privacy-policy");
         }
 
         IEnumerator ResetScene()

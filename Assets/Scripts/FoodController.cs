@@ -77,12 +77,15 @@ public class FoodController : MonoBehaviour {
 
     private void SpawnFoodInstance()
     {
-        GameObject foodItem = foodList[Random.Range(0, unicornFood.Length)];
+        for(int i = 0; i < 2; i++)
+        {
+            GameObject foodItem = foodList[Random.Range(0, foodList.Length)];
 
-
-        // Pick a location. This is done by selecting a vertex at random and then a random point between it and the center of the plane
-        Vector3 foodPosition = new Vector3(planeCenter.x + Random.Range(-0.75f, 0.75f), planeCenter.y, planeCenter.z + Random.Range(-0.75f, 0.75f));
-        foodInstance = Instantiate(foodItem, foodPosition, Quaternion.identity, anchor.transform);
-        foodAge = 0;
+            // Pick a location. This is done by selecting a vertex at random and then a random point between it and the center of the plane
+            Vector3 foodPosition = new Vector3(planeCenter.x + Random.Range(-0.75f, 0.75f), planeCenter.y, planeCenter.z + Random.Range(-0.75f, 0.75f));
+            foodInstance = Instantiate(foodItem, foodPosition, Quaternion.identity, anchor.transform);
+            foodAge = 0;
+        }
+        
     }
 }
