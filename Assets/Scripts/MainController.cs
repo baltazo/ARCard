@@ -105,10 +105,6 @@ namespace GoogleARCore.Examples.AugmentedImage
             {
                 int gamePausedSleepTimeout = 15;
                 Screen.sleepTimeout = gamePausedSleepTimeout;
-                /*if (Input.GetKey(KeyCode.Escape))
-                {
-                    Application.Quit();
-                }*/
             }
             else
             {

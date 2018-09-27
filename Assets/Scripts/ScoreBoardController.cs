@@ -35,7 +35,7 @@ public class ScoreBoardController : MonoBehaviour {
     public void SetAnchor(Anchor anchor)
     {
         transform.position = new Vector3(anchor.transform.position.x + xOffset, anchor.transform.position.y + yOffset, anchor.transform.position.z +zOffset);
-        transform.SetParent(anchor.transform);
+        //transform.SetParent(anchor.transform);
         foreach(Renderer r in GetComponentsInChildren<Renderer>())
         {
             r.enabled = true;

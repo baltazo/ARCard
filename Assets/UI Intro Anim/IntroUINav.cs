@@ -5,34 +5,50 @@ using UnityEngine.SceneManagement;
 
 public class IntroUINav : MonoBehaviour {
 
-    public GameObject skipButton;
+    //public GameObject skipButton;
     public GameObject loadingIcon;
     private Animator animator;
     [SerializeField] private GameObject quitPanel;
+    [SerializeField] private GameObject dontHaveCardPanel;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    /*void Start () {
         if (PlayerPrefs.HasKey("PLAYED"))
         {
-            skipButton.SetActive(true);
+            //skipButton.SetActive(true);
         }
         animator = GetComponent<Animator>();
-	}
+	}*/
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (quitPanel.activeSelf)
+            /*if (quitPanel.activeSelf)
             {
                 QuitGame();
                 return;
             }
-            animator.SetTrigger("Back");
+            else if (dontHaveCardPanel.activeSelf)
+            {
+                DontHaveCard();
+            }*/
+            if (dontHaveCardPanel.activeSelf)
+            {
+                DontHaveCard();
+            } 
+            else if (quitPanel.activeSelf == false)
+            {
+                quitPanel.SetActive(true);
+            }
+            else
+            {
+                Application.Quit();
+            }
         }
     }
 
-    public void PanelOneToTwo()
+    /*public void PanelOneToTwo()
     {
         animator.SetTrigger("Panel02");
     }
@@ -45,7 +61,7 @@ public class IntroUINav : MonoBehaviour {
     public void FadeOut()
     {
         animator.SetTrigger("FadeOut");
-    }
+    }*/
 
     public void StartGame()
     {
@@ -54,14 +70,36 @@ public class IntroUINav : MonoBehaviour {
         StartCoroutine(LoadNextSceneAsync());
     }
 
-    public void QuitToOne()
+    /*public void QuitToOne()
     {
         animator.SetTrigger("Panel01");
+    }*/
+
+    public void DontHaveCard()
+    {
+        dontHaveCardPanel.SetActive(!dontHaveCardPanel.activeSelf);
+    }
+
+    public void DontQuit()
+    {
+        quitPanel.SetActive(!quitPanel.activeSelf);
     }
 
     public void QuitGame()
     {
-        Application.Quit();
+        if (quitPanel.activeSelf)
+        {
+            Application.Quit();
+        }
+        else
+        {
+            quitPanel.SetActive(true);
+        }
+    }
+
+    public void GetACard()
+    {
+        Application.OpenURL("https://www.arfunstuff.com");
     }
 
     IEnumerator LoadNextSceneAsync()
